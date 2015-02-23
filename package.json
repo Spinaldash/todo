@@ -1,0 +1,51 @@
+{
+  "name": "toDo",
+  "description": "Hapi Prototype Application",
+  "homepage": "https://github.com/coding-house-jan2015/hapi-prototype",
+  "engines": {
+    "node": "0.12.x"
+  },
+  "keywords": [
+    "gulp",
+    "jshint",
+    "jscs",
+    "server",
+    "hapi",
+    "node",
+    "mongo",
+    "mongoose"
+  ],
+  "author": "MJ & Jose <mjosephvp@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coding-house-jan2015/hapi-prototype.git"
+  },
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server/index.js",
+    "localstart": "MONGO_URL=mongodb://localhost/todo PORT=3000 nodemon -e js,jade server/index.js",
+    "clean": "rm -rf node_modules && rm -rf public && npm install && bower install && gulp build",
+    "postinstall": "bower install && gulp build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "good": "^5.1.1",
+    "good-console": "^4.1.0",
+    "hapi": "^8.2.0",
+    "jade": "^1.9.2",
+    "joi": "^5.1.0",
+    "lodash": "^3.2.0",
+    "mongoose": "^3.8.23"
+  },
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "gulp": "^3.8.10",
+    "gulp-copy": "0.0.2",
+    "gulp-jade": "^0.11.0",
+    "gulp-jscs": "^1.4.0",
+    "gulp-jshint": "^1.9.2",
+    "gulp-less": "^3.0.0",
+    "gulp-watch": "^4.1.1",
+    "jshint-stylish": "^1.0.0"
+  }
+}
