@@ -7,10 +7,10 @@ var copy = require('gulp-copy');
 var watch = require('gulp-watch');
 
 var paths = {
-  filesrc: ['./client/**/*', './server/**/*'],
+  filesrc: ['./client/**/*', './server/**/*', './test/**/*'],
   jadesrc: ['./client/**/*.jade'],
   lesssrc: ['./client/**/*.less'],
-  codesrc: ['./client/**/*.js', './server/**/*.js'],
+  codesrc: ['./client/**/*.js', './server/**/*.js', './test/**/*.js'],
   copysrc: ['./client/**/*.js', './client/**/*.mp3', './client/**/*.jpg', './client/**/*.wav', './client/**/*.png', './client/**/*.ico'],
   jadedst: './public',
   lessdst: './public',

@@ -1,0 +1,13 @@
+extends ../../layouts/master
+block content
+  h3.page-header Create User
+  
+  form(method='post', action='/users')
+    .form-group
+      label(for='email') Email
+      input#email.form-control(type='email', name='email', autofocus=true)
+    .form-group
+      label(for='password') Password
+      input(type='password', name='password')
+    .form-group
+      button.btn.btn-success(type='submit') Register User
