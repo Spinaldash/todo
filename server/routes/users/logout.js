@@ -5,6 +5,7 @@ module.exports = {
     mode: 'try'
   },
   handler: function(request, reply) {
-    reply.view('templates/general/home', request.auth.credentials);
+    request.auth.session.clear();
+    reply.redirect('/');
   }
 };

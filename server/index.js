@@ -16,6 +16,7 @@ mongoose.connection.once('open', function() {
     server.auth.strategy('session', 'cookie', true, authentication);
     server.route(routes);
     server.start(function() {
+      require('./events/on-pre-response')(server);
       console.log('info', server.info.uri);
       console.log('info', process.env.MONGO_URL);
     });

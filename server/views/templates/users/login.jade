@@ -1,13 +1,13 @@
 extends ../../layouts/master
 block content
-  h3.page-header Create User
+  h3.page-header Login
   
-  form(method='get', action='/login/authenticate')
+  form(method='post', action='/users/authenticate')
     .form-group
       label(for='email') Email
       input#email.form-control(type='email', name='email', autofocus=true)
     .form-group
       label(for='password') Password
-      input(type='password', name='password')
+      input#password.form-control(type='password', name='password')
     .form-group
       button.btn.btn-success(type='submit') Login
