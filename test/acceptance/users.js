@@ -9,12 +9,13 @@ var describe = lab.describe;
 var it = lab.it;
 var beforeEach = lab.beforeEach;
 var server = require('../../server/index');
+var cp = require('child_process')
+var dbname = process.env.MONGO_URL.split('/')[3];
 
 describe('user route', function() {
   beforeEach(function(done) {
-    User.remove(function() {
-      var user = new User({email: 'bilbo@theShire.com', password: '123'});
-      User.register(user, done);
+    cp.execFile(__dirname + '/../scripts/clean-db.sh', [dbname], {cwd: __dirname + '/../scripts'}, function(err, stdout, stderr) {
+      done();
     });
   });
 

@@ -1,13 +1,15 @@
 extends ../../layouts/master
 block content
-  h3.page-header Create User
-  
-  form(method='post', action='/users')
-    .form-group
-      label(for='email') Email
-      input#email.form-control(type='email', name='email', autofocus=true)
-    .form-group
-      label(for='password') Password
-      input#password.form-control(type='password', name='password')
-    .form-group
-      button.btn.btn-success(type='submit') Register User
+  .col-xs-2
+  .col-xs-8
+    .jumbotron
+      h3.page-header.headerStyle Register
+      form(method='post', action='/users')
+        .form-group
+          label.formStyle(for='email') Email
+          input#email.form-control(type='email', name='email', autofocus=true)
+        .form-group
+          label.formStyle(for='password') Password
+          input#password.form-control(type='password', name='password')
+        .form-group
+          button.btn.btn-success(type='submit') Register User
