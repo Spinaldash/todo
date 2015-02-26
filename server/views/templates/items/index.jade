@@ -1,18 +1,65 @@
 extends ../../layouts/master
 block content
   h1 Items
-    a.btn.btn-info(href='/items/new') Add New Item
-  ul
-    each item in items
-        p= item.title
-        p= 'Priority: ' + item.priority
-        p= 'Tags: ' + item.tags
-        if item.isCompleted
-          p Completed: completed
-        else
-          p Completed: not completed
-      striped-table
-        thead
+  .btn-group
+    a.btn.btn-info(href='/items/new') Add New Item    
+  .jumbotron
+    .container-fluid
+      .navbar-header
+        .nav
+          ul.pagination
+            li
+              a(href='/items?skip=' + plusNum(skip, -5, skipMax))
+                span &laquo;
+      .nav.navbar-right
+        ul.pagination
+          li
+            a(href='/items?skip=' + plusNum(skip, 5, skipMax)) 
+              span &raquo;
+    table.table.striped-table
+      thead.tableStyle
+        tr
+          th 
+          th 
+            a(href='/items?sort=title') Title  
+          th 
+            a(href='/items?sort=priority') Priority
+          th 
+            a(href='/items?sort=tags') Tags
+          th Control Panel
+          th 
+            a(href='items?sort=dueDate') Due Date
+      tbody.tableStyle
+        each item in items
           tr
-        tbody
-          each item in items
+            form(method='post', action='items/#{item._id}/completed')
+              th
+                if item.isCompleted
+                  button.btn.btn-link(type='submit')
+                    i.fa.fa-check(style='color: green')
+                else
+                  button.btn.btn-link(type='submit')
+                    i.fa.fa-pencil-square-o
+            td=item.title
+            td
+              a(href="/items?priority=" + item.priority)= item.priority
+            td
+              each t in item.tags
+                a(href='/items?tags='+t)
+                  i.fa.fa-leaf=t + ' '
+            td
+              form(method='post', action='/items/'+ item._id + '/delete')
+                input(type='hidden', name=deleteButton, value=1)
+                button.btn.btn-link(type=submit) &#xf0fc;
+                  i.fa.fa-delete(style='color:red')
+            td= moment(item.dueDate).format('MMMM Do YYYY')
+              
+                    
+                    //- 
+                    //- if item.isCompleted
+                    //-   a(href='/items?sort=-isCompleted') 
+                    //-     i.fa.fa-check(style='color: green')
+                    //- else
+                    //-   a(href='/items?sort=isCompleted') 
+                    //-     i.fa.fa-pencil-square-o
+              

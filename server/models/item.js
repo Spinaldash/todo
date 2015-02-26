@@ -12,4 +12,12 @@ var itemSchema = mongoose.Schema({
   isCompleted: {type: Boolean, default: false}
 });
 
+// itemSchema.pre('save', function(next){
+//   if(this.isNew){
+//     this.tags = this.tags[0].split(',').map(function(e){return e.trim().toLowerCase();});
+//
+//   }
+// })
+
+
 module.exports = mongoose.model('Item', itemSchema);
